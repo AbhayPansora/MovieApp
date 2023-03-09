@@ -10,27 +10,42 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
+    var navigationController : UINavigationController?
+    var applicationapp : UIApplication!
+    var isVerifyOTPScreenOrNot = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        applicationapp = application
+        //MARK: - Set navigation theame
+        UINavigationBar.appearance().barTintColor = APP_WHITE_COLOR
+        UINavigationBar.appearance().tintColor = APP_WHITE_COLOR
+        UINavigationBar.appearance().isTranslucent = true
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : APP_BLACK_COLOR, NSAttributedString.Key.font: UIFont(name: FONT_BOLD, size: 18.0)!]
+        if getBoolUserDefaultValue(KEY_IS_USER_LOGGED_IN){
+            self.openSplashScreen(index: 1)
+        }else{
+            self.openSplashScreen(index: 0)
+        }
         return true
     }
-
-    // MARK: UISceneSession Lifecycle
-
-    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        // Called when a new scene session is being created.
-        // Use this method to select a configuration to create the new scene with.
-        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+    func openSplashScreen(index: Int) {
+        if index == 1{
+            let VC = HomeVC(nibName: "HomeVC", bundle: nil)
+            self.navigationController = UINavigationController(rootViewController: VC)
+            self.window?.rootViewController = self.navigationController
+            self.window?.makeKeyAndVisible()
+        }else{
+            let VC = SignUpVC(nibName: "SignUpVC", bundle: nil)
+            self.navigationController = UINavigationController(rootViewController: VC)
+            self.window?.rootViewController = self.navigationController
+            self.window?.makeKeyAndVisible()
+            
+        }
     }
-
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-    }
-
-
+    
 }
 

@@ -1,0 +1,26 @@
+PODS:
+  - AARatingBar (1.2)
+  - SDWebImage (5.11.1):
+    - SDWebImage/Core (= 5.11.1)
+  - SDWebImage/Core (5.11.1)
+  - TPKeyboardAvoiding (1.3.5)
+
+DEPENDENCIES:
+  - AARatingBar
+  - SDWebImage
+  - TPKeyboardAvoiding
+
+SPEC REPOS:
+  trunk:
+    - AARatingBar
+    - SDWebImage
+    - TPKeyboardAvoiding
+
+SPEC CHECKSUMS:
+  AARatingBar: dc54d24687ae97688ffdb29738332d0bc5c0c09f
+  SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
+  TPKeyboardAvoiding: d55b3ea7b362540af8fcf36aa3ed2e87bf210cc6
+
+PODFILE CHECKSUM: c114ea9e34444e743759790a901ad579281ead51
+
+COCOAPODS: 1.11.3
